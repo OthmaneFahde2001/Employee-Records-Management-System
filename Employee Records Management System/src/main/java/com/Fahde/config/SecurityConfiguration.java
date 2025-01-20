@@ -45,7 +45,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
                         .requestMatchers(WHITE_LIST_URL).permitAll()
-                        .requestMatchers("/api/v1/management/**").hasAnyRole(Role.ADMINISTRATOR.name(), Role.MANAGER.name(), Role.HR_PERSONNEL.name())
+                        .requestMatchers("/api/v1/employees/**").hasAnyRole(Role.ADMINISTRATOR.name(), Role.MANAGER.name(), Role.HR_PERSONNEL.name())
 
                         // Fine-grained permissions
                         .requestMatchers(HttpMethod.GET, "/api/v1/employees/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name(), HR_READ.name())
