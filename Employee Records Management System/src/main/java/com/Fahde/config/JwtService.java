@@ -12,11 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
+@Data
 public class JwtService {
 
   @Value("${application.security.jwt.secret-key}")
@@ -103,7 +105,7 @@ public class JwtService {
   }
 
 
-  private Key getSignInKey() {
+  public Key getSignInKey() {
     byte[] keyBytes = Decoders.BASE64.decode(secretKey);
     return Keys.hmacShaKeyFor(keyBytes);
   }
